@@ -1,0 +1,30 @@
+{
+	"manifest_version": 2,
+	"name": "Chrome Video To GIF",
+	"version": "0.2.0",
+	"update_url": "http://gif.nath.is/updates.xml",
+	"permissions": [
+		"<all_urls>",
+		"http://*/",
+		"https://*/",
+		"https://pbs.twimg.com/",
+		"https://twitter.com/",
+		"tabs"
+	],
+	"content_scripts": [
+		{
+			"matches": ["<all_urls>"],
+			"js": ["build/extension.js"],
+			"run_at": "document_end"	
+		}
+	],
+	"web_accessible_resources": [
+		"worker.js", "node_modules/videoconverter/build/ffmpeg.js"
+	],
+	"background": {
+		"scripts": ["build/background.js"]
+	},
+	"browser_action": {
+		"default_popup": "popup.html"
+	}
+}
