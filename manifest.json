@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "Chrome Video To GIF",
-	"version": "0.2.0",
+	"version": "1.0.0",
 	"update_url": "http://gif.nath.is/updates.xml",
 	"permissions": [
 		"<all_urls>",
