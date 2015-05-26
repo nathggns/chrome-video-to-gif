@@ -11,7 +11,8 @@ gulp.task('crx-copy', function() {
 		'node_modules/videoconverter/build/ffmpeg.js',
 		'popup.html',
 		'node_modules/react/dist/react-with-addons.js',
-		'node_modules/react/dist/JSXTransformer.js'
+		'node_modules/react/dist/JSXTransformer.js',
+		'logo.png'
 	], { base : './' })
 		.pipe(gulp.dest('build-crx'))
 });
