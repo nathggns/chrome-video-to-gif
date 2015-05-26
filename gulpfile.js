@@ -17,6 +17,12 @@ gulp.task('crx-copy', function() {
 		.pipe(gulp.dest('build-crx'))
 });
 
+gulp.task('crx-store', ['crx-copy'], function() {
+	var manifest = JSON.parse(fs.readFileSync('build-crx/manifest.json'));
+	delete manifest.update_url;
+	fs.writeFileSync('build-crx/manifest.json', JSON.stringify(manifest));
+});
+
 gulp.task('crx-clean', ['crx-compile'], function() {
 	return gulp.src(['build-crx'])
 		.pipe(clean());

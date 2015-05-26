@@ -15,7 +15,7 @@ class ElementHighlighter {
 	private highlighted = false;
 	private highlightDiv : HTMLDivElement;
 
-	constructor(private element : HTMLElement) {
+	constructor(private element : Element) {
 
 	}
 
@@ -31,14 +31,14 @@ class ElementHighlighter {
 		var rect = this.getRect();
 
 		div.style.backgroundColor = 'rgba(0,0,255,0.5)';
-		div.style.zIndex = 9999;
+		div.style.zIndex = '9999';
 		div.style.position = 'absolute';
 		div.style.top = rect.top + 'px';
 		div.style.left = rect.left + 'px';
 		div.style.width = rect.width + 'px';
 		div.style.height = rect.height + 'px';
 
-		document.body.appendChild(div);
+		this.element.offsetParent.appendChild(div);
 		this.highlighted = true;
 	}
 
@@ -46,13 +46,18 @@ class ElementHighlighter {
 		if (!this.highlighted) {
 			return;
 		}
-		document.body.removeChild(this.highlightDiv);
+    	this.element.offsetParent.removeChild(this.highlightDiv);
 		this.highlightDiv = null;
 		this.highlighted = false;
 	}
 
-	private getRect() {
-		return this.element.getBoundingClientRect();
+	private getRect() : { top : number; left : number; width : number; height : number; } {
+    	return {
+      		top : this.element.offsetTop,
+      		left : this.element.offsetLeft,
+      		width : this.element.offsetWidth,
+      		height : this.element.offsetHeight
+      	}
 	}
 }
 
