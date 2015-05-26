@@ -5,3 +5,6 @@ build
 build
 *.js
 !worker.js
+!gulp-crx.js
+!gulpfile.js
+build-crx
