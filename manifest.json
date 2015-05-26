@@ -11,6 +11,9 @@
 		"https://twitter.com/",
 		"tabs"
 	],
+	"icons": {
+		"128": "logo.png"
+	},
 	"content_scripts": [
 		{
 			"matches": ["<all_urls>"],
